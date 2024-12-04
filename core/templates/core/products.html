@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7H+y+w/7sN9IFh"   
+crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'custom/css/pricipal.css' %}">
+<style>
+  body {
+    font-family: 'San Francisco', sans-serif;
+    background-color: #050505; 
+    color: #333;
+  }
+  .tabla-responsive {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #050505;
+    font-family: 'San Francisco', sans-serif;
+    color: white;
+
+}
+
+.tabla-responsive th,
+.tabla-responsive td {
+    text-align: center;
+    padding: 15px;
+}
+</style>
+<body>
+<table class="tabla-responsive">
+  <thead>
+      <tr>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Precio de Venta</th>
+          <th>Descripción</th>
+          <th>Fecha de registro</th>
+          <th>Codigo de producto</th>
+          <th>Historial</th>
+          </tr>
+  </thead>
+  <tbody>
+      {% for registro in registros %}
+      <tr>
+          <td>{{ registro.nombre }}</td>
+          <td>{{ registro.marca }}</td>
+          <td>{{ registro.modelo }}</td>
+          <td>{{ registro.cantidad }}</td>
+          <td>{{ registro.precio }}</td>
+          <td>{{ registro.precio_venta }}</td>
+          <td>{{ registro.descripcion }}</td>
+          <td>{{ registro.fecha_registro }}</td>
+          <td>{{ registro.cod_producto }}</td>
+            <td>
+              <a href="{% url 'generar_pdf' registro.cod_producto %}" target="_blank" class="btn btn-primary">
+                  Descargar Historial
+              </a>
+          </td>   
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</body>
+
+
+{% endblock %}

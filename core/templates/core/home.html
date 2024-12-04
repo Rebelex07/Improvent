@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+  .contenedor-principal {
+    display: flex; /* Flexbox para centrar */
+    flex-direction: column;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    text-align: center; /* Centrar el contenido dentro */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    padding: 20px; /* Espaciado interno para pantallas pequeñas */
+    box-sizing: border-box; /* Incluye el padding en las dimensiones del contenedor */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  }
+  p {
+    font-size: 1.2rem; 
+    line-height: 1.6;
+    color: white;
+  }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem; /* Reduce el tamaño en pantallas pequeñas */
+    }
+    p {
+      font-size: 1rem; /* Reduce el tamaño del texto */
+    }
+  }
+</style>
+<div class="contenedor-principal">
+    <h1>Improvent</h1>
+<p>Siempre has soñado con una herramienta que elimine tus quebraderos de cabeza.<br>
+    Con Improvent jamás tendrás que preocuparte de nuevo por tus Inventarios.
+</div>
+{% if messages %}
+    <script>
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ message }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            {% endif %}
+        {% endfor %}
+    </script>
+{% endif %}
+
+{% endblock %}
