@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6kyolj5r6#pf%km5-%c0$(cy59t5a1r1j&fm(&g68hrv*9)y5('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sergio07god.pythonanywhere.com']
 
 
 # Application definition
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': '/home/sergio07god/Improvent/db.sqlite3',
     }
 }
 
