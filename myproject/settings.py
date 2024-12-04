@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-6kyolj5r6#pf%km5-%c0$(cy59t5a1r1j&fm(&g68hrv*9)y5(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['sergio07god.pythonanywhere.com']
+ALLOWED_HOSTS = ['sergio07god.pythonanywhere.com',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -136,7 +137,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ORIGIN_ALLOW_ALL = True  # Permite solicitudes desde cualquier origen
+CORS_ORIGIN_ALLOW_ALL = False  # Permite solicitudes desde cualquier origen
 
 #VARIABLES DE REDIRECCION DE LOGIN Y LOGOUT
 LOGIN_REDIRECT_URL = 'home'
