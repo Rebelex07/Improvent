@@ -311,38 +311,45 @@ def csv_to_qr(request):
       temp_dir = 'temp_qr'
       os.makedirs(temp_dir, exist_ok=True)
 
-     
-       # Crear un diccionario vacío
-    product_data_list = []
-
-# Iterar sobre las filas del DataFrame
-    for index, row in data.iterrows():
-    # Crear un diccionario dinámico basado en las columnas del CSV
-            product_data = {col: row[col] for col in data.columns}
-            product_data_list.append(product_data)
+      # Generar los códigos QR con datos JSON
+      for index, row in data.iterrows():
+        # Crear un diccionario con los datos del producto
+        product_data = {
+          "id": row['id'],
+          "nombre": row['nombre'],
+          "marca": row['marca'],
+          "modelo": row['modelo'],
+          "cantidad": row['cantidad'],
+          "precio": row['precio'],
+          "precio_venta": row['precio_venta'],
+          "descripcion": row['descripcion'],
+          "fecha_creacion": row['fecha_creacion'],
+          "fecha_registro": row['fecha_registro'],
+          "id_qr": row['id_qr'],
+        }
 
         # Convertir el diccionario a formato JSON
-    json_data = json.dumps(product_data_list)
+        json_data = json.dumps(product_data)
 
         # Generar el código QR con los datos JSON
-    img = qrcode.make(json_data)
-    img.save(f"{temp_dir}/{row['id_qr']}_{row['nombre'].replace(' ', '_')}_{row['marca'].replace(' ', '_')}_{row['modelo'].replace(' ', '_')}.png")
+        img = qrcode.make(json_data)
+        img.save(f"{temp_dir}/{row['id_qr']}_{row['nombre'].replace(' ', '_')}_{row['marca'].replace(' ', '_')}_{row['modelo'].replace(' ', '_')}.png")
         
         # Crear el archivo ZIP
-    memory_file = io.BytesIO()
-    with zipfile.ZipFile(memory_file, 'w') as zipf:
+      memory_file = io.BytesIO()
+      with zipfile.ZipFile(memory_file, 'w') as zipf:
           for root, _, files in os.walk(temp_dir):
               for file in files:
                   zipf.write(os.path.join(root, file), file)
 
       # Eliminar la carpeta temporal
-    rmtree(temp_dir)
+      rmtree(temp_dir)
 
       # Descargar el archivo ZIP
-    response = HttpResponse(memory_file.getvalue(), content_type='application/zip')
-    response['Content-Disposition'] = 'attachment; filename="codigos_qr.zip"' 
+      response = HttpResponse(memory_file.getvalue(), content_type='application/zip')
+      response['Content-Disposition'] = 'attachment; filename="codigos_qr.zip"' 
 
-    return response
+      return response
 
   else:
     form = CSVUploadForm()
