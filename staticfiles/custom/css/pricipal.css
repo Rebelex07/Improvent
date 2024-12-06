@@ -1,8 +1,9 @@
-/* Estilos generales */
 body {
   font-family: 'San Francisco', sans-serif;
   background-color: #050505;
   color: #333;
+  margin: 0;
+  padding: 0;
 }
 
 /* Estilos para la navbar */
@@ -14,13 +15,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px; /* Asegura que la navbar no esté pegada a los bordes */
 }
 
 .navbar-brand {
   font-weight: bold;
   font-size: 2rem;
   color: black;
-  padding: 15px 20px;
 }
 
 .nav-link {
@@ -49,14 +50,13 @@ body {
 .navbar-left {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-right: 20px;
+  margin-left: auto; /* Mueve el contenedor hacia la derecha */
 }
 
 .navbar-left .d-flex.align-items-center {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Pone el nombre debajo del ícono */
+  align-items: center; /* Centra los elementos */
 }
 
 .navbar-left .d-flex.align-items-center i {
@@ -90,11 +90,11 @@ h1 {
 
 /* Para pantallas de 768px o más pequeñas (tabletas y dispositivos pequeños) */
 @media (max-width: 768px) {
-  /* Reducir la altura de la navbar */
   .navbar {
       height: auto;
       flex-direction: column;
       justify-content: center;
+      text-align: center; /* Centra los elementos */
   }
 
   .navbar-nav {
@@ -108,10 +108,17 @@ h1 {
       font-size: 1rem;
   }
 
-  /* Ajustar los íconos y texto del usuario */
   .navbar-left {
       margin-right: 0;
       margin-bottom: 15px;
+  }
+
+  .navbar-toggler {
+      margin-left: auto;
+  }
+
+  .navbar-toggler-icon {
+      background-color: #000; /* Cambia el color del ícono */
   }
 
   /* Ajustar el tamaño del logo (si es necesario) */
