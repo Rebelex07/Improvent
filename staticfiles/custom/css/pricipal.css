@@ -1,88 +1,141 @@
+/* Estilos generales */
 body {
-    font-family: 'San Francisco', sans-serif;
-    background-color: #050505;
-    color: #333;
-  }
-  
+  font-family: 'San Francisco', sans-serif;
+  background-color: #050505;
+  color: #333;
+}
+
+/* Estilos para la navbar */
+.navbar {
+  background-color: #9b9b9b;
+  box-shadow: none;
+  height: 80px; /* Ajusta la altura según sea necesario */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 2rem;
+  color: black;
+  padding: 15px 20px;
+}
+
+.nav-link {
+  color: #333;
+  padding: 15px 20px;
+}
+
+.nav-link:hover {
+  color: #666;
+  background-color: #6f6f6f;
+}
+
+.nav-link:active {
+  font-weight: bold;
+  background-color: #6f6f6f;
+}
+
+/* Centra los elementos dentro de la barra de navegación */
+.navbar-collapse {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* Contenedor que mantiene el icono del usuario a la derecha */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.navbar-left .d-flex.align-items-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-left .d-flex.align-items-center i {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.navbar-left .d-flex.align-items-center .text-primary {
+  color: #fff;
+  font-size: 1rem;
+}
+
+h1 {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 100px;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Estilo de texto primario */
+.text-primary {
+  color: black !important;
+  font-family: 'San Francisco', sans-serif;
+  font-weight: bold;
+}
+
+/* Media Queries para hacer la página responsive */
+
+/* Para pantallas de 768px o más pequeñas (tabletas y dispositivos pequeños) */
+@media (max-width: 768px) {
+  /* Reducir la altura de la navbar */
   .navbar {
-    background-color: #9b9b9b;
-    box-shadow: none;
-    height: 80px; /* Ajustar altura según sea necesario */
-    width: 100%; /* Hacer que la navbar ocupe todo el ancho */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      height: auto;
+      flex-direction: column;
+      justify-content: center;
   }
-  
-  .navbar-brand {
-    font-weight: bold;
-    font-size: 2rem;
-    color: black;
-    padding: 15px 20px;
+
+  .navbar-nav {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
   }
-  
+
   .nav-link {
-    color: #333;
-    padding: 15px 20px; /* Ajustar padding para mejor espaciado */
+      padding: 10px 15px;
+      font-size: 1rem;
   }
-  
-  .nav-link:hover {
-    color: #666;
-    background-color: #6f6f6f;
-  }
-  
-  .nav-link:active {
-    font-weight: bold;
-    background-color: #6f6f6f;
-  }
-  
-  /* Centra los elementos dentro de la barra de navegación */
-  .navbar-collapse {
-    justify-content: center;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Contenedor que mantiene el icono del usuario a la derecha */
+
+  /* Ajustar los íconos y texto del usuario */
   .navbar-left {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Mueve el contenedor hacia la derecha */
-    margin-right: 20px; /* Ajusta el margen a la derecha */
+      margin-right: 0;
+      margin-bottom: 15px;
   }
-  
-  /* Estilo para el ícono y nombre del usuario */
-  .navbar-left .d-flex.align-items-center {
-    display: flex;
-    flex-direction: column; /* Pone el nombre debajo del ícono */
-    align-items: center; /* Centra los elementos */
+
+  /* Ajustar el tamaño del logo (si es necesario) */
+  .navbar-brand {
+      font-size: 1.5rem;
   }
-  
-  .navbar-left .d-flex.align-items-center i {
-    font-size: 2rem; 
-    margin-bottom: 5px; 
-  }
-  
-  .navbar-left .d-flex.align-items-center .text-primary {
-    color: #fff; /* Color del texto */
-    font-size: 1rem; /* Tamaño adecuado para el nombre */
-  }
-  
+}
+
+/* Para pantallas de 480px o más pequeñas (teléfonos móviles) */
+@media (max-width: 480px) {
   h1 {
-    color: white;
+      font-size: 60px; /* Reducir el tamaño del título */
   }
-  
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
-  h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 100px;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+
+  .navbar-nav {
+      flex-direction: column;
+      text-align: center;
   }
-  .text-primary {
-    color: black !important;
-    font-family: 'San Francisco', sans-serif;
-    font-weight: bold;
+
+  .nav-link {
+      font-size: 0.9rem; /* Ajustar el tamaño de los enlaces */
   }
+
+  .navbar-brand {
+      font-size: 1.2rem;
+  }
+}
