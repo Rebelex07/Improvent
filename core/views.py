@@ -96,7 +96,7 @@ def generar_pdf(request, cod_producto):
     p.showPage()
     p.save()
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=f'historial_{producto.nombre}.pdf')
+    return FileResponse(buffer, as_attachment=True, filename=f'historial_{producto.cod_producto}_{producto.nombre}_{producto.marca}_{producto.modelo}.pdf')
 
 @login_required 
 def scan_page(request):
