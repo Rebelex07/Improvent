@@ -313,23 +313,17 @@ def csv_to_qr(request):
 
       # Generar los códigos QR con datos JSON
       for index, row in data.iterrows():
-        # Crear un diccionario con los datos del producto
-        product_data = {
-          "id": row['id'],
-          "nombre": row['nombre'],
-          "marca": row['marca'],
-          "modelo": row['modelo'],
-          "cantidad": row['cantidad'],
-          "precio": row['precio'],
-          "precio_venta": row['precio_venta'],
-          "descripcion": row['descripcion'],
-          "fecha_creacion": row['fecha_creacion'],
-          "fecha_registro": row['fecha_registro'],
-          "id_qr": row['id_qr'],
-        }
+       # Crear un diccionario vacío
+        product_data_list = []
+
+# Iterar sobre las filas del DataFrame
+        for index, row in data.iterrows():
+    # Crear un diccionario dinámico basado en las columnas del CSV
+            product_data = {col: row[col] for col in data.columns}
+            product_data_list.append(product_data)
 
         # Convertir el diccionario a formato JSON
-        json_data = json.dumps(product_data)
+        json_data = json.dumps(product_data_list)
 
         # Generar el código QR con los datos JSON
         img = qrcode.make(json_data)
