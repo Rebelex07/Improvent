@@ -38,7 +38,7 @@ def exit (request):
 @login_required #decorador debe de ir por encima  de la definicion de la funcion
 def products (request):
     if request.user.is_authenticated:
-        registros = Producto.objects.filter(creado_por=request.user)
+        registros = Producto.objects.filter(creado_por=request.user.id)
         return render(request, 'core/products.html', {'registros': registros})
     else:
         return redirect('login')
@@ -100,7 +100,7 @@ def generar_pdf(request, cod_producto):
 
 @login_required 
 def scan_page(request):
-    product_count = Producto.objects.filter(creado_por=request.user).count()
+    product_count = Producto.objects.filter(creado_por=request.user.id).count()
     if request.method == 'POST':
         try:           
             data = json.loads(request.body)
@@ -139,7 +139,7 @@ def scan_page(request):
                             precio=precio,
                             precio_venta=precio_venta,
                             creado_por=request.user,
-                            id_qr=(cod_producto*1000)  # Función para calcular el ID QR
+                            id_qr=(cod_producto*1000*request.user.id)  # Función para calcular el ID QR
                         )
                         producto.save()
 

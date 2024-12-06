@@ -32,6 +32,7 @@ crossorigin="anonymous"></script>
 <table class="tabla-responsive">
   <thead>
       <tr>
+          <th>Producto</th>
           <th>Nombre</th>
           <th>Marca</th>
           <th>Modelo</th>
@@ -47,6 +48,7 @@ crossorigin="anonymous"></script>
   <tbody>
       {% for registro in registros %}
       <tr>
+        <td data-cod-producto="{{ registro.cod_producto }}"></td>
           <td>{{ registro.nombre }}</td>
           <td>{{ registro.marca }}</td>
           <td>{{ registro.modelo }}</td>
@@ -66,6 +68,37 @@ crossorigin="anonymous"></script>
   </tbody>
 </table>
 </body>
+<script>
+  const STATIC_URL = "{{ STATIC_URL }}";
+  // Mapea los códigos a las imágenes
+  const productImages = {
+    '1': 'custom/images/GRAFICA_GIGABYTE_RTX_4060.webp',
+    '2': 'custom/images/GRAFICA_GIGABYTE_RTX_4060TI.webp',
+    '3': 'custom/images/GRAFICA_GIGABYTE_RTX_4080_SUPER.webp',
+    '4': 'custom/images/GRAFICA_ZOTAC_RTX_3050.webp',
+    '5': 'custom/images/GRAFICA_ASROCK_RX_6600.webp',
+    '6': 'custom/images/PLACABASE_GIGABYTE_H610M.webp',
+    '7': 'custom/images/PLACABASE_GIGABYTE_Z890.webp',
+    '8': 'custom/images/PLACABASE_ASUS_B650M.webp',
+    '9': 'custom/images/PLACABASE_ASUSROG_X870E.webp',
+    '10': 'custom/images/PLACABASE_MSI_A520M.webp',
+    '11': 'custom/images/PROCESADOR_RYZEN5_7600X.webp',
+    '12': 'custom/images/PROCESADOR_RYZEN7_5800X.webp',
+    '13': 'custom/images/PROCESADOR_RYZEN9_5900X.webp',
+    '14': 'custom/images/PROCESADOR_CORE5_12400F.webp',
+    '15': 'custom/images/PROCESADOR_CORE7_14700KF.webp',
+};
+
+  // Itera sobre las filas de la tabla
+  document.querySelectorAll('td[data-cod-producto]').forEach(td => {
+    const codProducto = td.getAttribute('data-cod-producto'); // Obtén el código del producto
+    const imgSrc = productImages[codProducto]; // Busca la imagen en el diccionario
+
+    if (imgSrc) {
+      td.innerHTML = `<img src="${STATIC_URL}${imgSrc}" alt="Imagen del producto" style="width:100px; height:auto;">`;
+    }
+});
+</script>
 
 
 {% endblock %}

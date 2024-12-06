@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-6kyolj5r6#pf%km5-%c0$(cy59t5a1r1j&fm(&g68hrv*9)y5('
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production! desplegado: False
 DEBUG = False
 
 ALLOWED_HOSTS = ['sergio07god.pythonanywhere.com',
@@ -80,6 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Improvent.wsgi.application'
+#WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
 # Database
@@ -88,7 +89,8 @@ WSGI_APPLICATION = 'Improvent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/sergio07god/Improvent/db.sqlite3',
+        'NAME': '/home/sergio07god/Improvent/db.sqlite3', #(Despliegue)
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -117,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 
