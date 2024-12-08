@@ -100,7 +100,7 @@ def generar_pdf(request, cod_producto):
 
 @login_required 
 def scan_page(request):
-    product_count = Producto.objects.filter(creado_por=request.user.id).count()
+    product_count = Producto.objects.filter(creado_por=request.user).count()
     if request.method == 'POST':
         try:           
             data = json.loads(request.body)
