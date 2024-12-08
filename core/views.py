@@ -118,8 +118,6 @@ def scan_page(request):
             fecha_creacion = product_data.get('fecha_creacion')
             
 
-           
-                
             producto_existente = Producto.objects.filter(
                     cod_producto=cod_producto,
                     creado_por=request.user
@@ -147,7 +145,7 @@ def scan_page(request):
                             # Prepare response data
             response_data = {
                         'success': True,
-                        'contador': Producto.objects.count(),
+                        'contador': Producto.objects.filter(creado_por=request.user).count(),
                         'prodName': nombre,
                         'prodBrand': marca,
                         'prodModel': modelo,
